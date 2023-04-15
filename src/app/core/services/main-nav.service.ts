@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IMainNavLink } from '../models/main-nav-link.model';
+import { IMainNavLink } from '@core/models/main-nav-link.model';
 
 @Injectable({providedIn: 'root'})
 export class MainNavService {

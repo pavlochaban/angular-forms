@@ -2,9 +2,9 @@ import { ViewChild, OnInit, ChangeDetectorRef, Directive } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import { MatIconButton } from '@angular/material/button';
 import { debounceTime, takeUntil } from 'rxjs';
-import { ResizeObserverDirective } from '../resize-observer-directive';
-import { AppBaseDirective } from '../app-base.directive';
-import { IResizeObserverOutput } from '../resize-observer/resize-observer.model';
+import { ResizeObserverDirective } from '@common/directives/resize-observer/resize-observer-directive';
+import { AppBaseDirective } from '@common/directives/app-base.directive';
+import { IResizeObserverOutput } from '@common/directives/resize-observer/resize-observer.model';
 
 @Directive()
 export class AppComponentResizeDirective extends AppBaseDirective implements OnInit {

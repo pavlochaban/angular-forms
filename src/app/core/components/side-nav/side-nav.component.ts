@@ -1,9 +1,9 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
-import { MainNavService } from '../../services/main-nav.service';
-import { IMainNavLink } from '../../models/main-nav-link.model';
 import { CommonModule } from '@angular/common';
+import { MainNavService } from '@core/services/main-nav.service';
+import { IMainNavLink } from '@core/models/main-nav-link.model';
 
 @Component({
   selector: 'side-nav',
