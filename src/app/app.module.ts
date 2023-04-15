@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SideNavComponent } from './core/components/side-nav/side-nav.component';
 
 const MATERIAL_IMPORTS = [
   MatSidenavModule,
@@ -25,6 +26,7 @@ const MATERIAL_IMPORTS = [
     AppRoutingModule,
     BrowserAnimationsModule,
     ...MATERIAL_IMPORTS,
+    SideNavComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
