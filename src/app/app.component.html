@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+  <button hidden mat-icon-button (click)="toggleSidenav()">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-drawer-container class="app-container">
+  <mat-drawer class="side-nav-container">
+    <side-nav></side-nav>
+  </mat-drawer>
+  <mat-drawer-content></mat-drawer-content>
+</mat-drawer-container>

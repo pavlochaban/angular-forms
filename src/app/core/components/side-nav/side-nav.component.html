@@ -1,0 +1,10 @@
+<mat-nav-list class="side-nav__list">
+  <ng-container *ngFor="let link of mainNavLinks">
+    <a mat-list-item
+       class="side-nav__list-item"
+       [routerLink]="link.routerLink"
+       routerLinkActive="side-nav__list-item_active">
+      {{ link.label }}
+    </a>
+  </ng-container>
+</mat-nav-list>

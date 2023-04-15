@@ -1,8 +1,21 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatSidenavModule} from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SideNavComponent } from './core/components/side-nav/side-nav.component';
+
+const MATERIAL_IMPORTS = [
+  MatSidenavModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatButtonModule,
+];
 
 @NgModule({
   declarations: [
@@ -10,7 +23,10 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    ...MATERIAL_IMPORTS,
+    SideNavComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

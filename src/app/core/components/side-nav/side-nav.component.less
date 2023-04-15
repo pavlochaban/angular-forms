@@ -1,0 +1,19 @@
+.side-nav__list {
+  padding-top: 0;
+}
+
+.side-nav__list-item {
+  &::before {
+    background-color: transparent;
+    opacity: 1;
+  }
+  &.side-nav__list-item_active {
+    background: rgba(156,39,176,.15);
+    &:hover {
+      background: rgba(156,39,176,.3);
+    }
+    ::ng-deep .mdc-list-item__primary-text {
+      color: #d176e1;
+    }
+  }
+}
