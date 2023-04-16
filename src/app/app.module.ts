@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SideNavComponent } from '@core/components/side-nav/side-nav.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const MATERIAL_IMPORTS = [
   MatSidenavModule,
@@ -24,6 +25,7 @@ const MATERIAL_IMPORTS = [
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     ...MATERIAL_IMPORTS,
     SideNavComponent,
