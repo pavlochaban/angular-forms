@@ -10,6 +10,10 @@ export class FormsStoreService {
       label: 'Template Driven Forms',
       routerLink: AppUrls.Forms.TemplateDriven,
     },
+    {
+      label: 'Reactive Forms',
+      routerLink: AppUrls.Forms.Reactive,
+    },
   ];
 
 }
