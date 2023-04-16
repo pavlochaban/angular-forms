@@ -1,5 +1,5 @@
 import { Directive, OnInit, Output, EventEmitter, ElementRef, OnDestroy } from '@angular/core';
-import { IResizeObserverOutput } from './resize-observer/resize-observer.model';
+import { IResizeObserverOutput } from './resize-observer.model';
 
 @Directive({
   selector: '[resizeObserverDirective]',

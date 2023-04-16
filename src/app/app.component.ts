@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { AppComponentResizeDirective } from './common/directives/app-component/app-component-resize.directive';
-import { ResizeObserverDirective } from './common/directives/resize-observer-directive';
+import { AppComponentResizeDirective } from '@common/directives/app-component/app-component-resize.directive';
+import { ResizeObserverDirective } from '@common/directives/resize-observer/resize-observer-directive';
 
 @Component({
   selector: 'app-root',
