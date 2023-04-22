@@ -11,7 +11,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroupDirective, Reactive
 import { EMPTY, Observable, Subject, delay, of, takeUntil, tap } from 'rxjs';
 import { WordsBlacklist } from './validators/words-blacklist.validators';
 import { PasswordMatcher } from './validators/password-matcher.validators';
-import { UniqueEmailService } from './async-validators/unique-email.async-validator';
+import { UniqueEmailValidationService } from '@modules/forms/validators/unique-email.async-validator';
 
 @Component({
   templateUrl: 'reactive.component.html',
@@ -29,7 +29,7 @@ import { UniqueEmailService } from './async-validators/unique-email.async-valida
     MatCheckboxModule,
   ],
   providers: [
-    UniqueEmailService,
+    UniqueEmailValidationService,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -45,7 +45,7 @@ export class ReactiveComponent implements OnInit, AfterViewInit, OnDestroy {
       '',
       {
         validators: [Validators.required, Validators.email, Validators.minLength(4)],
-        asyncValidators: [this._uniqueEmailService.validate.bind(this._uniqueEmailService)],
+        asyncValidators: [this._uniqueEmailValidationService.validate.bind(this._uniqueEmailValidationService)],
         updateOn: 'blur'
       }
     ],
@@ -72,7 +72,7 @@ export class ReactiveComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(
     private _fb: FormBuilder,
-    private _uniqueEmailService: UniqueEmailService,
+    private _uniqueEmailValidationService: UniqueEmailValidationService,
   ) { }
 
   public ngOnInit(): void {
