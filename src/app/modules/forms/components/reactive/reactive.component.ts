@@ -10,8 +10,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AbstractControl, FormBuilder, FormControl, FormGroupDirective, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EMPTY, Observable, Subject, delay, of, takeUntil, tap } from 'rxjs';
 import { WordsBlacklist } from './validators/words-blacklist.validators';
-import { PasswordMatcher } from './validators/password-matcher.validators';
 import { UniqueEmailValidationService } from '@modules/forms/validators/unique-email.async-validator';
+import { PasswordMatcher } from '@modules/forms/validators/password-matcher.validators';
 
 @Component({
   templateUrl: 'reactive.component.html',
