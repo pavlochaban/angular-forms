@@ -12,6 +12,7 @@ import { EMPTY, Observable, Subject, delay, of, takeUntil, tap } from 'rxjs';
 import { WordsBlacklist } from './validators/words-blacklist.validators';
 import { UniqueEmailValidationService } from '@modules/forms/validators/unique-email.async-validator';
 import { PasswordMatcher } from '@modules/forms/validators/password-matcher.validators';
+import { FormsDataService } from '@modules/forms/services/forms-data.service';
 
 @Component({
   templateUrl: 'reactive.component.html',
@@ -73,6 +74,7 @@ export class ReactiveComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     private _fb: FormBuilder,
     private _uniqueEmailValidationService: UniqueEmailValidationService,
+    private _formsDataService: FormsDataService,
   ) { }
 
   public ngOnInit(): void {
@@ -130,7 +132,7 @@ export class ReactiveComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private _loadSkills(): void {
-    this.skills$ = this._getSkills()
+    this.skills$ = this._formsDataService.getSkills()
       .pipe(
         tap((skills: string[]) => {
           this._buildSkillsForm(skills);
@@ -143,14 +145,6 @@ export class ReactiveComponent implements OnInit, AfterViewInit, OnDestroy {
     skills.forEach((skill: string) => {
       this.form.controls.skills.addControl(skill, new FormControl(false, { nonNullable: true }))
     });
-  }
-
-  // helpers
-  private _getSkills(): Observable<string[]> {
-    return of(['angular', 'rxjs', 'typescript', 'nodejs'])
-      .pipe(
-        delay(3000)
-      );
   }
 
 }

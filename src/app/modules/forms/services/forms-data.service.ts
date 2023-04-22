@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, delay, map, of } from 'rxjs';
 
 @Injectable()
 export class FormsDataService {
@@ -16,6 +16,13 @@ export class FormsDataService {
     return this._http.get<any[]>(this._urlEmailCheck + email)
       .pipe(
         map(users => !users?.length)
+      );
+  }
+
+  public getSkills(): Observable<string[]> {
+    return of(['angular', 'rxjs', 'typescript', 'nodejs'])
+      .pipe(
+        delay(3000)
       );
   }
 
