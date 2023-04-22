@@ -25,7 +25,7 @@
     <input matInput
            ngModel
            #nickname="ngModel"
-           [wordsBlacklist]="['test', 'bohdan']"
+           [wordsBlacklist]="firstName.value"
            required minlength="1" maxlength="25" pattern="^[\w.]+$"
            name="nickname"
            placeholder="Enter your nickname">

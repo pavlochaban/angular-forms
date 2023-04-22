@@ -36,7 +36,7 @@ export class TemplateDrivenFormComponent implements AfterViewInit {
 
   private _initialFormValues: unknown;
 
-  ngAfterViewInit(): void {
+  public ngAfterViewInit(): void {
     setTimeout(() => {
       this._initialFormValues = this.form.value;
     });
