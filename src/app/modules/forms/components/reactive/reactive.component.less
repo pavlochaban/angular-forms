@@ -1,0 +1,67 @@
+.td-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding-top: 20px;
+
+  mat-form-field {
+    flex: 1 0 calc(50% - 10px);
+  }
+  mat-error {
+    span {
+      display: inline-block;
+    }
+  }
+  .td-form__skills-fieldset,
+  .td-form__phones-fieldset,
+  .td-form__password-fieldset,
+  .td-form__address-fieldset {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 0 0 calc(100% - 44px);
+    padding: 15px 20px 0px;
+    gap: 10px 20px;
+    margin: 0;
+    border-radius: 4px;
+  }
+  .td-form__phones-fieldset {
+    legend {
+      display: flex;
+      align-items: center;
+      line-height: 1;
+    }
+    mat-form-field {
+      flex: 0 0 100%;
+    }
+    mat-icon {
+      cursor: pointer;
+    }
+  }
+  .td-form__skills-fieldset {
+    padding: 5px 20px 10px;
+    mat-checkbox {
+      flex: 0 0 calc(25% - 15px);
+    }
+  }
+  .td-form__full-address {
+    flex: 0 0 100%;
+  }
+  .td-form__city,
+  .td-form__postal-code {
+    flex: 0 0 calc(50% - 10px);
+  }
+
+  .td-form__footer {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+  }
+
+}
+
+.color-accent {
+  color: #69f0ae;
+}
