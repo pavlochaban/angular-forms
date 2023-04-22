@@ -1,5 +1,6 @@
 import { Directive } from '@angular/core';
 import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator } from '@angular/forms';
+import { PasswordMatcher } from '@modules/forms/validators/password-matcher.validators';
 
 @Directive({
   selector: '[passwordMatcher]',
@@ -10,20 +11,8 @@ import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator } from '@an
 })
 export class PasswordMatcherDirective implements Validator {
 
-  private _error = { passwordMatcher: { mismatch: true } };
-
   validate(control: AbstractControl<string>): ValidationErrors | null {
-    const password = control.get('password');
-    const confirmPassword = control.get('confirmPassword');
-
-    if (!password?.value || password?.value === confirmPassword?.value) {
-      confirmPassword?.updateValueAndValidity({ emitEvent: false, onlySelf: true });
-      return null;
-    }
-
-    confirmPassword?.setErrors(this._error);
-
-    return this._error;
+    return PasswordMatcher(control);
   }
 
 }

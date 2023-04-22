@@ -25,7 +25,7 @@
     <input matInput
            ngModel
            #nickname="ngModel"
-           [wordsBlacklist]="['test', 'bohdan']"
+           [wordsBlacklist]="firstName.value"
            required minlength="1" maxlength="25" pattern="^[\w.]+$"
            name="nickname"
            placeholder="Enter your nickname">
@@ -84,6 +84,25 @@
              type="number" placeholder="Enter postal code">
     </mat-form-field>
   </fieldset>
+  <fieldset ngModelGroup="phones" class="td-form__phones-fieldset">
+    <legend>Phones <mat-icon *ngIf="phones.length < 5" (click)="onAddPhone($event)" matSuffix color="accent">add</mat-icon></legend>
+    <mat-form-field appearance="outline" *ngFor="let phone of phones; let index=index">
+      <mat-label>Phone #{{ index + 1 }}</mat-label>
+        <input matInput
+               ngModel
+               [name]="phone"
+               placeholder="Enter your phone">
+        <mat-icon *ngIf="phones.length > 1" (click)="onDeletePhone($event, index)" matSuffix color="warn">delete</mat-icon>
+      </mat-form-field>
+  </fieldset>
+  <fieldset ngModelGroup="skills"class="td-form__skills-fieldset">
+    <legend>Skills</legend>
+    <ng-container *ngIf="skills$ | async as skills; else skillsLoadingTemplate">
+      <mat-checkbox *ngFor="let skill of skills" ngModel [name]="skill" color="primary">
+        {{ skill | titlecase }}
+      </mat-checkbox>
+    </ng-container>
+  </fieldset>
   <fieldset ngModelGroup="credentials" passwordMatcher class="td-form__password-fieldset">
     <legend>Credentials</legend>
     <mat-form-field appearance="outline">
@@ -117,3 +136,7 @@
     <button type="submit" mat-raised-button color="primary">Submit</button>
   </div>
 </form>
+
+<ng-template #skillsLoadingTemplate>
+  <span class="color-accent">Skills is loading ...</span><mat-icon matSuffix class="animate-icon-circle-loader" color="accent">autorenew</mat-icon>
+</ng-template>
