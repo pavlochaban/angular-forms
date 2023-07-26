@@ -16,7 +16,6 @@ function _getError(blackList: string[], control?: AbstractControl<string>): Vali
 }
 
 function _isBanned(blackList: string[], control: AbstractControl<string>, controlToCheck?: AbstractControl<string>): boolean {
-  console.log(controlToCheck?.value)
   if (controlToCheck?.value) {
     return control.value?.toLowerCase() === controlToCheck.value?.toLowerCase();
   }

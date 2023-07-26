@@ -1,0 +1,21 @@
+<mat-form-field [appearance]="appearance">
+  <mat-label *ngIf="label">{{ label }}</mat-label>
+  <input matInput
+    [type]="type"
+    [autocomplete]="autocomplete"
+    [formControl]="formControl"
+    [placeholder]="placeholder || ''">
+  <mat-error>
+    <ng-container *ngTemplateOutlet="errorTemplate; context: { $implicit: formControl }"></ng-container>
+  </mat-error>
+</mat-form-field>
+
+<ng-template #errorTemplate let-control>
+  <span *ngIf="control?.hasError('required')">This field is required</span>
+  <span *ngIf="control?.getError('minlength') as minlengthError">This field is required minimum {{ minlengthError.requiredLength }} symbols</span>
+  <span *ngIf="control?.hasError('email')">This passwords should match</span>
+  <span *ngIf="control?.hasError('uniqueEmail')">This email is taken</span>
+  <span *ngIf="control?.hasError('passwordMatcher')">This passwords should match</span>
+  <span *ngIf="control?.hasError('pattern')">This field should be matched by pattern</span>
+  <span *ngIf="control?.getError('wordsBlacklist') as wordsBlacklistError">The {{ wordsBlacklistError.bannedWords }} words are banned</span>
+</ng-template>
