@@ -8,11 +8,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AbstractControl, FormBuilder, FormControl, FormGroupDirective, ReactiveFormsModule, Validators } from '@angular/forms';
-import { EMPTY, Observable, Subject, delay, of, takeUntil, tap } from 'rxjs';
+import { EMPTY, Observable, Subject, takeUntil, tap } from 'rxjs';
 import { WordsBlacklist } from './validators/words-blacklist.validators';
 import { UniqueEmailValidationService } from '@modules/forms/validators/unique-email.async-validator';
 import { PasswordMatcher } from '@modules/forms/validators/password-matcher.validators';
 import { FormsDataService } from '@modules/forms/services/forms-data.service';
+import { InputFormControlComponent } from '@common/components/controls/input-form-control/input-form-control.component';
+import { NestedGroupControlsPipe } from '@modules/forms/pipes/nested-group-controls.pipe';
+import { NestedArrayControlsPipe } from '@modules/forms/pipes/nested-array-controls.pipe';
+import { comparatorFn } from '@modules/forms/helpers/controls-order-comparator';
+import { GuardControlInstancePipe } from '@modules/forms/pipes/guard-control-instance.pipe';
+import { FORM_CONFIG } from './form-config';
 
 @Component({
   templateUrl: 'reactive.component.html',
@@ -28,6 +34,10 @@ import { FormsDataService } from '@modules/forms/services/forms-data.service';
     MatNativeDateModule,
     MatButtonModule,
     MatCheckboxModule,
+    InputFormControlComponent,
+    NestedGroupControlsPipe,
+    NestedArrayControlsPipe,
+    GuardControlInstancePipe,
   ],
   providers: [
     UniqueEmailValidationService,
@@ -65,6 +75,8 @@ export class ReactiveComponent implements OnInit, AfterViewInit, OnDestroy {
       validators: [PasswordMatcher]
     })
   });
+  public formConfig = FORM_CONFIG;
+  public comparatorFn = comparatorFn;
 
   public skills$: Observable<string[]> = EMPTY;
 
