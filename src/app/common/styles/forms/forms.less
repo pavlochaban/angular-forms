@@ -1,0 +1,23 @@
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding-top: 20px;
+
+  ::ng-deep > .form__field {
+    flex: 1 0 calc(50% - 10px);
+  }
+
+  ::ng-deep > .form__fieldset {
+    flex: 0 0 100%;
+  }
+
+  &__footer {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+  }
+}

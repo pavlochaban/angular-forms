@@ -26,4 +26,8 @@ export class FormsDataService {
       );
   }
 
+  public getFormConfig(): Observable<any> {
+    return this._http.get('assets/form-config.json');
+  }
+
 }

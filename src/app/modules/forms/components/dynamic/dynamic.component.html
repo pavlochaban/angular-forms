@@ -1,0 +1,17 @@
+<form
+  *ngIf="formConfig$ | async as formConfig"
+  [formGroup]="formGroup"
+  class="form autofill-corrections"
+  (ngSubmit)="onSubmit($event)" (reset)="onReset($event)">
+  <ng-container *ngFor="let control of formConfig.controls | keyvalue">
+    <ng-container
+      [ngComponentOutlet]="dynamicControlResolver.resolve(control.value.controlType) | async"
+      [ngComponentOutletInjector]="control.key| dynamicControlInjectorResolver : control.value">
+    </ng-container>
+  </ng-container>
+
+  <div class="form__footer">
+    <button type="reset" mat-raised-button>Reset</button>
+    <button type="submit" mat-raised-button color="primary">Submit</button>
+  </div>
+</form>
