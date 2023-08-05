@@ -1,0 +1,9 @@
+<fieldset [formGroupName]="controlData.controlKey">
+  <legend>{{ controlData.config.label }}</legend>
+  <ng-container *ngFor="let control of controlData.config.controls | keyvalue : comparatorFn; trackBy: trackBy">
+    <ng-container
+      [ngComponentOutlet]="dynamicControlResolver.resolve(control.value.controlType) | async"
+      [ngComponentOutletInjector]="control.key | dynamicControlInjectorResolver : control.value : controlData.config">
+    </ng-container>
+  </ng-container>
+</fieldset>

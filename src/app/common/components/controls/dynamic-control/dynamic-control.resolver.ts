@@ -11,7 +11,7 @@ export class DynamicControlResolver {
 
   private _lazyComponents: DynamicControlsMap = {
     input: () => import('./dynamic-input/dynamic-input.component').then((c => c.DynamicInputComponent)),
-    group: () => new Promise((res, rej) => { rej('Group is not implemented') }),
+    group: () => import('./dynamic-group/dynamic-group.component').then((c => c.DynamicGroupComponent)),
     array: () => import('./dynamic-array/dynamic-array.component').then((c => c.DynamicArrayComponent)),
   }
   private _loadedComponents = new Map<string, Type<any>>();
