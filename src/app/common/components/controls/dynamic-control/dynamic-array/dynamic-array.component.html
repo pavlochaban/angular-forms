@@ -1,0 +1,19 @@
+<fieldset [formArrayName]="controlData.controlKey" class="form-fieldset dynamic-form-array__fieldset">
+  <legend>
+    {{ controlData.config.label }}
+    <mat-icon
+      *ngIf="abstractControl.controls.length < 5"
+      matSuffix
+      color="accent"
+      (click)="onAddClick($event)">
+      add
+    </mat-icon>
+  </legend>
+  <div *ngIf="!abstractControl.controls.length" class="no-data">No data</div>
+  <ng-container *ngFor="let control of controlData.config.controls | keyvalue : comparatorFn; trackBy: trackBy">
+    <ng-container
+      [ngComponentOutlet]="dynamicControlResolver.resolve(control.value.controlType) | async"
+      [ngComponentOutletInjector]="control.key | dynamicControlInjectorResolver : control.value : controlData.config">
+    </ng-container>
+  </ng-container>
+</fieldset>
