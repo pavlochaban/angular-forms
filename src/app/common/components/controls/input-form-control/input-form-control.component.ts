@@ -1,10 +1,11 @@
 import { NgIf, NgTemplateOutlet } from '@angular/common';
-import { Component, Input, OnInit, Optional, Self } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Optional, Output, Self } from '@angular/core';
 import { ControlValueAccessor, FormControl, NgControl, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule, MatFormFieldAppearance } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { FormInputType } from '@modules/forms/models/form-control-config';
+import { DynamicControlSuffix } from '../dynamic-control/dynamic-control.model';
 
 type InputModelType = string | number | null;
 
@@ -29,6 +30,9 @@ export class InputFormControlComponent implements OnInit, ControlValueAccessor {
   @Input() public autocomplete: string = 'on';
   @Input() public label: string | undefined;
   @Input() public placeholder: string | undefined = '';
+  @Input() public suffix: DynamicControlSuffix  | undefined;
+
+  @Output() public suffixClicked = new EventEmitter<void>();
 
   public disabled: boolean = false;
   public formControl!: FormControl<any>;
@@ -58,6 +62,11 @@ export class InputFormControlComponent implements OnInit, ControlValueAccessor {
 
   public setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
+  }
+
+  public onSuffixClick(event: MouseEvent): void {
+    event.stopPropagation();
+    this.suffixClicked.emit();
   }
 
 }

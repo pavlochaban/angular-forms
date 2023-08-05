@@ -5,6 +5,7 @@
     [autocomplete]="autocomplete"
     [formControl]="formControl"
     [placeholder]="placeholder || ''">
+  <mat-icon *ngIf="suffix" (click)="onSuffixClick($event)" matSuffix [color]="suffix.color">{{ suffix.iconName }}</mat-icon>
   <mat-error>
     <ng-container *ngTemplateOutlet="errorTemplate; context: { $implicit: formControl }"></ng-container>
   </mat-error>
