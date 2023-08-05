@@ -3,7 +3,7 @@
   [formGroup]="formGroup"
   class="form autofill-corrections"
   (ngSubmit)="onSubmit($event)" (reset)="onReset($event)">
-  <ng-container *ngFor="let control of formConfig.controls | keyvalue">
+  <ng-container *ngFor="let control of formConfig.controls | keyvalue : comparatorFn">
     <ng-container
       [ngComponentOutlet]="dynamicControlResolver.resolve(control.value.controlType) | async"
       [ngComponentOutletInjector]="control.key| dynamicControlInjectorResolver : control.value">
