@@ -8,7 +8,7 @@ import { DynamicControl } from '../../dynamic-control.model';
 export class DynamicInputLabelPipe implements PipeTransform {
 
   transform(config: DynamicControl, parentConfig: DynamicControl | undefined): string {
-    if (!parentConfig) { return config.label; }
+    if (!parentConfig || parentConfig.controlType !== 'array') { return config.label; }
 
     return config.label + ' #' + (config.order + 1)
   }
