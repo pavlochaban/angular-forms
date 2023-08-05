@@ -23,7 +23,7 @@ import { clone } from 'lodash';
     DynamicControlInjectorResolverPipe,
   ],
   host: {
-    class: 'dynamic-form-array form__fieldset'
+    class: 'dynamic-form-array form__fieldset form-fieldset'
   }
 })
 export class DynamicArrayComponent extends DynamicControlBaseDirective {

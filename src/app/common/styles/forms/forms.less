@@ -12,6 +12,11 @@
 
   ::ng-deep > .form__fieldset {
     flex: 0 0 100%;
+    &.two-columns {
+      ::ng-deep > .form__field {
+        flex: 1 0 calc(50% - 10px);
+      }
+    }
   }
 
   &__footer {
