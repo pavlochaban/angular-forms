@@ -1,4 +1,4 @@
-import { Directive, OnInit, StaticProvider, inject } from '@angular/core';
+import { Directive, ElementRef, OnInit, Renderer2, StaticProvider, inject } from '@angular/core';
 import { AbstractControl, ControlContainer, FormArray, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { CONTROL_DATA } from './dynamic-control-data-token';
 import { DynamicControl, ValidatorKeys } from './dynamic-control.model';
@@ -11,11 +11,14 @@ export const dynamicControlProvider: StaticProvider = {
 @Directive()
 export class DynamicControlBaseDirective implements OnInit {
 
+  public elRef = inject(ElementRef);
+  public renderer = inject(Renderer2);
   public controlData = inject(CONTROL_DATA);
   public controlContainer = inject(ControlContainer);
   public abstractControl!: AbstractControl;
 
   public ngOnInit(): void {
+    this._addCustomClass();
     if (this.controlContainer.control instanceof FormArray) {
       this.controlContainer.control.push(this.abstractControl);
     } else if (this.controlContainer.control instanceof FormGroup) {
@@ -43,6 +46,12 @@ export class DynamicControlBaseDirective implements OnInit {
     }
 
     return Validators.nullValidator;
+  }
+
+  private _addCustomClass(): void {
+    if (this.controlData.config.htmlClass) {
+      this.renderer.addClass(this.elRef.nativeElement, this.controlData.config.htmlClass);
+    }
   }
 
 }

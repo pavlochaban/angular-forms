@@ -17,6 +17,7 @@ export interface DynamicControl<T = string> {
   placeholder: string;
   order: number;
   value: T | null;
+  htmlClass?: string;
   defaultChildControlConfig?: DynamicControl;
   controls?: DynamicFormConfig['controls'];
   validators?: {
