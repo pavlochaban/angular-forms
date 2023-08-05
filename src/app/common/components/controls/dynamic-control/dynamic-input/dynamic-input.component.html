@@ -1,0 +1,7 @@
+<input-form-control
+  [formControl]="abstractControl"
+  [label]="controlData.config | dynamicInputLabel : controlData.parentConfig"
+  [placeholder]="controlData.config.placeholder"
+  [suffix]="controlData.parentConfig?.controls | dynamicInputSuffix : controlData.config"
+  (suffixClicked)="onSuffixClick()">
+</input-form-control>
