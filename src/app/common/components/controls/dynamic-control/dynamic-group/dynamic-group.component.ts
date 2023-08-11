@@ -29,7 +29,7 @@ import { clone } from 'lodash-es';
 export class DynamicGroupComponent extends DynamicControlBaseDirective {
 
   protected dynamicControlResolver = inject(DynamicControlResolver);
-  public override abstractControl: FormGroup<any> = new FormGroup({});
+  public override abstractControl: FormGroup<any> = new FormGroup({}, { validators: this.resolveValidators(this.controlData.config) });
 
   public trackBy(index: number, item: KeyValue<string, DynamicControl<string>>): string {
     return item.key;
