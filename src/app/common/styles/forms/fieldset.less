@@ -1,0 +1,16 @@
+fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 15px 20px 0px;
+  gap: 10px 20px;
+  margin: 0;
+  border-radius: 4px;
+
+  ::ng-deep > .form__field {
+    flex: 0 0 100%;
+
+    &.two-columns {
+      flex: 1 0 calc(50% - 10px);
+    }
+  }
+}

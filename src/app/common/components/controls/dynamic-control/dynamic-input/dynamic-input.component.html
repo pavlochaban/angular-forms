@@ -1,0 +1,9 @@
+<input-form-control
+  [formControl]="abstractControl"
+  [type]="controlData.config.type"
+  [autocomplete]="controlData.config.autocomplete"
+  [label]="controlData.config | dynamicInputLabel : controlData.parentConfig"
+  [placeholder]="controlData.config.placeholder"
+  [suffix]="controlData.parentConfig?.controls | dynamicInputSuffix : controlData.config"
+  (suffixClicked)="onSuffixClick()">
+</input-form-control>

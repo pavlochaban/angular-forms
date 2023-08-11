@@ -4,6 +4,7 @@ export namespace AppUrls {
     export const Base = 'forms';
     export const TemplateDriven = 'template-driven';
     export const Reactive = 'reactive';
+    export const Dynamic = 'dynamic';
   }
 
 }

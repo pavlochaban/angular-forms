@@ -14,6 +14,10 @@ export class FormsStoreService {
       label: 'Reactive Forms',
       routerLink: AppUrls.Forms.Reactive,
     },
+    {
+      label: 'Dynamic',
+      routerLink: AppUrls.Forms.Dynamic,
+    },
   ];
 
 }
