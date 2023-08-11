@@ -4,7 +4,6 @@ import { ControlValueAccessor, FormControl, NgControl, ReactiveFormsModule } fro
 import { MatFormFieldModule, MatFormFieldAppearance } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { FormInputType } from '@modules/forms/models/form-control-config';
 import { DynamicControlSuffix } from '../dynamic-control/dynamic-control.model';
 
 type InputModelType = string | number | null;
@@ -26,8 +25,8 @@ type InputModelType = string | number | null;
 export class InputFormControlComponent implements OnInit, ControlValueAccessor {
 
   @Input() public appearance: MatFormFieldAppearance = 'outline';
-  @Input() public type: FormInputType = 'text';
-  @Input() public autocomplete: string = 'on';
+  @Input() public type: string = 'text';
+  @Input() public autocomplete: string | undefined = 'off';
   @Input() public label: string | undefined;
   @Input() public placeholder: string | undefined = '';
   @Input() public suffix: DynamicControlSuffix  | undefined;

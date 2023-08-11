@@ -14,7 +14,8 @@
 <ng-template #errorTemplate let-control>
   <span *ngIf="control?.hasError('required')">This field is required</span>
   <span *ngIf="control?.getError('minlength') as minlengthError">This field is required minimum {{ minlengthError.requiredLength }} symbols</span>
-  <span *ngIf="control?.hasError('email')">This passwords should match</span>
+  <span *ngIf="control?.getError('maxlength') as maxlengthError">This field should be maximum {{ maxlengthError.requiredLength }} symbols</span>
+  <span *ngIf="control?.hasError('email')">This field should be matched by email pattern</span>
   <span *ngIf="control?.hasError('uniqueEmail')">This email is taken</span>
   <span *ngIf="control?.hasError('passwordMatcher')">This passwords should match</span>
   <span *ngIf="control?.hasError('pattern')">This field should be matched by pattern</span>
