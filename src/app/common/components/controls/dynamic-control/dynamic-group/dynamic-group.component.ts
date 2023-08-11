@@ -7,7 +7,7 @@ import { CommonModule, KeyValue, KeyValuePipe } from '@angular/common';
 import { DynamicControlResolver } from '../dynamic-control.resolver';
 import { DynamicControlInjectorResolverPipe } from '../dynamic-control-injector-resolver.pipe';
 import { DynamicControl } from '../dynamic-control.model';
-import { clone } from 'lodash';
+import { clone } from 'lodash-es';
 
 @Component({
   templateUrl: './dynamic-group.component.html',

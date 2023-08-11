@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { DynamicControlBaseDirective, dynamicControlProvider } from '../dynamic-control-base.component';
 import { InputFormControlComponent } from '../../input-form-control/input-form-control.component';
 import { FormArray, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { clone } from 'lodash';
+import { clone } from 'lodash-es';
 import { DynamicInputSuffixPipe } from './pipes/dynamic-input-suffix.pipe';
 import { DynamicInputLabelPipe } from './pipes/dynamic-input-label.pipe';
 
