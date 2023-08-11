@@ -1,0 +1,155 @@
+{
+  "controls": {
+    "fullName": {
+      "controlType": "input",
+      "type": "text",
+      "label": "First Name",
+      "placeholder": "Enter your name",
+      "value": "",
+      "order": 0,
+      "validators": {
+        "required": true
+      }
+    },
+    "lastName": {
+      "controlType": "input",
+      "type": "text",
+      "label": "Last Name",
+      "placeholder": "Enter your last name",
+      "value": "",
+      "order": 1,
+      "validators": {
+        "minLength": 6
+      }
+    },
+    "nickname": {
+      "controlType": "input",
+      "type": "text",
+      "label": "Nickname",
+      "placeholder": "Enter your nickname",
+      "value": "",
+      "order": 2,
+      "validators": {
+        "required": true,
+        "minLength": 1,
+        "maxLength": 25,
+        "pattern": "^[\\w.]+$"
+      }
+    },
+    "email": {
+      "controlType": "input",
+      "type": "email",
+      "label": "Email",
+      "placeholder": "Enter your email",
+      "value": "",
+      "order": 3,
+      "updateOn": "blur",
+      "validators": {
+        "required": true,
+        "minLength": 4,
+        "email": true
+      },
+      "asyncValidators": {
+        "uniqueEmail": true
+      }
+    },
+    "address": {
+      "controlType": "group",
+      "label": "Address",
+      "order": 5,
+      "controls": {
+        "fullAddress": {
+          "controlType": "input",
+          "type": "text",
+          "label": "Full Address",
+          "placeholder": "Street name and house number",
+          "value": "",
+          "order": 0
+        },
+        "city": {
+          "controlType": "input",
+          "type": "text",
+          "label": "City",
+          "placeholder": "Enter city",
+          "value": "",
+          "order": 1,
+          "htmlClass": "two-columns"
+        },
+        "postalCode": {
+          "controlType": "input",
+          "type": "text",
+          "label": "Post Code",
+          "placeholder": "Enter postal code",
+          "value": "",
+          "order": 2,
+          "htmlClass": "two-columns"
+        }
+      }
+    },
+    "phones": {
+      "controlType": "array",
+      "label": "Phones",
+      "order": 6,
+      "defaultChildControlConfig": {
+        "controlType": "input",
+        "type": "text",
+        "label": "Phone",
+        "placeholder": "Enter your phone",
+        "suffix": {
+          "color": "warn",
+          "iconName": "delete",
+          "clickMethod": "deleteFromArray"
+        }
+      },
+      "controls": {
+        "0": {
+          "controlType": "input",
+          "type": "text",
+          "label": "Phone",
+          "placeholder": "Enter your phone",
+          "value": "",
+          "order": 0,
+          "suffix": {
+            "color": "warn",
+            "iconName": "delete",
+            "clickMethod": "deleteFromArray"
+          }
+        }
+      }
+    },
+    "credentials": {
+      "controlType": "group",
+      "label": "Credentials",
+      "order": 7,
+      "validators": {
+        "passwordMatcher": true
+      },
+      "controls": {
+        "password": {
+          "controlType": "input",
+          "type": "password",
+          "label": "Password",
+          "placeholder": "Password",
+          "autocomplete": "new-password",
+          "order": 0,
+          "htmlClass": "two-columns",
+          "validators": {
+            "required": true,
+            "minLength": 8
+          }
+        },
+        "confirmPassword": {
+          "controlType": "input",
+          "type": "password",
+          "label": "Confirm Password",
+          "placeholder": "Confirm Password",
+          "order": 1,
+          "htmlClass": "two-columns",
+          "validators": {
+            "minLength": 8
+          }
+        }
+      }
+    }
+  }
+}
