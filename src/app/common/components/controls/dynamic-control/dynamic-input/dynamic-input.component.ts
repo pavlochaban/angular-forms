@@ -5,6 +5,7 @@ import { FormArray, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { clone } from 'lodash-es';
 import { DynamicInputSuffixPipe } from './pipes/dynamic-input-suffix.pipe';
 import { DynamicInputLabelPipe } from './pipes/dynamic-input-label.pipe';
+import { UniqueEmailValidationService } from '@modules/forms/validators/unique-email.async-validator';
 
 @Component({
   templateUrl: 'dynamic-input.component.html',
@@ -16,13 +17,21 @@ import { DynamicInputLabelPipe } from './pipes/dynamic-input-label.pipe';
     DynamicInputSuffixPipe,
     DynamicInputLabelPipe,
   ],
+  providers: [UniqueEmailValidationService],
   host: {
     class: 'dynamic-form-input form__field'
   }
 })
 export class DynamicInputComponent extends DynamicControlBaseDirective {
 
-  public override abstractControl: FormControl = new FormControl(this.controlData.config.value, this.resolveValidators(this.controlData.config));
+  public override abstractControl: FormControl = new FormControl(
+    this.controlData.config.value,
+    {
+      validators: this.resolveValidators(this.controlData.config),
+      asyncValidators: this.resolveAsyncValidators(this.controlData.config),
+      updateOn: this.controlData.config.updateOn,
+    }
+  );
 
   public onSuffixClick(): void {
     const method = this.controlData.config.suffix?.clickMethod;
